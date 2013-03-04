@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="charset=UTF-8" />
+<title>LiveClock</title>
+<link href="css/main.css" type="text/css" rel="stylesheet" id="sheet" />
+<script src="js/message.js" type="text/javascript"></script>
+<script src="js/main.js" type="text/javascript"></script>
+<script src="js/check.js" type="text/javascript"></script>
+<script src="js/settings.js" type="text/javascript"></script>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/ddaccordion.js" type="text/javascript"></script>
+<script type="text/javascript">
+		ddaccordion.init({
+			headerclass: "opener",
+			contentclass: "myContent",
+			revealtype: "click",
+			mouseoverdelay: 125,
+			collapseprev: true, 
+			defaultexpanded: [],
+			onemustopen: false,
+			animatedefault: false,
+			persiststate: false,
+			toggleclass: ["closeContent", "openContent"],
+			togglehtml: ["src", "images/plus.png", "images/minus.png"], 
+			animatespeed: "fast",
+			oninit:function(expandedindices){},
+			onopenclose:function(header, index, state, isuseractivated){}
+		});
+</script>
+</head>
+
+<body onload="appInit();" id="myWidget">
+	<!-- Start Clock -->
+	<div id="clockbox" onclick="openSettings();">
+		<!-- Start Time -->
+		<div id="background"></div>
+		<!-- Start Time Layer -->
+			<div id="clocklayer">
+				<span id="time"></span>
+			</div>
+		<div id="foreground"></div>
+		<!-- Start Time -->
+		
+		<!-- Start Date -->
+		<div id="dateBG"></div>
+		<!-- Start Date Layer -->
+			<div id="datelayer">
+				<span id="date"></span>
+			</div>
+		<!-- End Date -->
+	</div>
+	<!-- End Clock -->
+	
+	<!-- Settings Menu -->
+	<div id="settingbox">
+		<div class="bHead">
+			<h3>
+				<script type="text/javascript">document.write(GetMessage("sHead"));</script>
+			</h3>
+		</div>
+
+		<div class="bBody">
+			<form name="selectForm">
+				<div class="opener" id="TextSettings">
+					<b>
+						<script type="text/javascript">document.write(GetMessage("stringText"));</script>
+						<img src="images/new/plus.png" height="9" width="9" alt="open" align="absmiddle" />
+					</b>
+				</div>
+				<div class="myContent">
+					<ul>
+						<li id="fontStyleSet"><script type="text/javascript">document.write(GetMessage("sStyle"));</script>
+							<select name="fontStyle" size="1" class="selectStyle">
+								<option value="normal" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vNormal"));</script>
+								</option>
+								<option value="italic">
+									<script type="text/javascript">document.write(GetMessage("vItalic"));</script>
+								</option>
+							</select>
+							<select name="fontWeight" size="1" class="selectStyle">
+								<option value="bold" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vBold"));</script>
+								</option>
+								<option value="normal">
+									<script type="text/javascript">document.write(GetMessage("vNormal"));</script>
+								</option>
+							</select>
+						</li>
+						<li id="fontAlignSet"><script type="text/javascript">document.write(GetMessage("sAlign"));</script>
+							<select name="alignment" size="1" class="selectStyle">
+								<option value="left">
+									<script type="text/javascript">document.write(GetMessage("vLeft"));</script>
+								</option>
+								<option value="center" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vCenter"));</script>
+								</option>
+								<option value="right">
+									<script type="text/javascript">document.write(GetMessage("vRight"));</script>
+								</option>
+							</select>
+						</li>
+						<li><script type="text/javascript">document.write(GetMessage("sColor"));</script>
+							<select name="fontcolor" size="1" class="selectStyle">
+								<option value="deepskyblue">
+									<script type="text/javascript">document.write(GetMessage("vDeepskyblue"));</script>
+								</option>
+								<option value="white" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vWhite"));</script>
+								</option>
+								<option value="black">
+									<script type="text/javascript">document.write(GetMessage("vBlack"));</script>
+								</option>
+								<option value="royalblue">
+									<script type="text/javascript">document.write(GetMessage("vRoyalblue"));</script>
+								</option>
+								<option value="green">
+									<script type="text/javascript">document.write(GetMessage("vGreen"));</script>
+								</option>
+								<option value="red">
+									<script type="text/javascript">document.write(GetMessage("vRed"));</script>
+								</option>
+								<option value="orange">
+									<script type="text/javascript">document.write(GetMessage("vOrange"));</script>
+								</option>
+								<option value="navy">
+									<script type="text/javascript">document.write(GetMessage("vNavy"));</script>
+								</option>
+								<option value="gray">
+									<script type="text/javascript">document.write(GetMessage("vGray"));</script>
+								</option>
+								<option value="yellow">
+									<script type="text/javascript">document.write(GetMessage("vYellow"));</script>
+								</option>
+								<option value="#008080">
+									<script type="text/javascript">document.write(GetMessage("vTeal"));</script>
+								</option>
+								<option value="#FF1493">
+									<script type="text/javascript">document.write(GetMessage("vDeeppink"));</script>
+								</option>
+								<option value="#32CD32">
+									<script type="text/javascript">document.write(GetMessage("vLimegreen"));</script>
+								</option>
+								<option value="#DEB887">
+									<script type="text/javascript">document.write(GetMessage("vBurlywood"));</script>
+								</option>
+								<option value="#B22222">
+									<script type="text/javascript">document.write(GetMessage("vFirebrick"));</script>
+								</option>
+								<!-- 3.00 -->
+								<option value="#760787">
+									<script type="text/javascript">document.write(GetMessage("vPurple"));</script>
+								</option>
+								<option value="#F5F5DC">
+									<script type="text/javascript">document.write(GetMessage("vBeige"));</script>
+								</option>
+								<option value="#D2691E">
+									<script type="text/javascript">document.write(GetMessage("vChocolate"));</script>
+								</option>
+								<option value="#7FFF00">
+									<script type="text/javascript">document.write(GetMessage("vChartreuse"));</script>
+								</option>
+								<option value="#F08080">
+									<script type="text/javascript">document.write(GetMessage("vLightCoral"));</script>
+								</option>
+							</select>
+						</li>
+						<li id="fontOpacity"><script type="text/javascript">document.write(GetMessage("sOpacity"));</script>
+							<select name="fontopacity" size="1" class="selectStyle">
+								<option value="1.00" selected="selected">100%</option>
+								<option value="0.90">90%</option>
+								<option value="0.80">80%</option>
+								<option value="0.70">70%</option>
+								<option value="0.60">60%</option>
+								<option value="0.50">50%</option>
+								<option value="0.40">40%</option>
+								<option value="0.30">30%</option>
+								<option value="0.20">20%</option>
+								<option value="0.10">10%</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+
+				<div class="opener" id="BorderSettings">
+					<b>
+						<script type="text/javascript">document.write(GetMessage("stringBorder"));</script>
+						<img src="images/new/plus.png" height="9" width="9" alt="open" align="absmiddle" />
+					</b>
+				</div>
+				<div class="myContent">
+					<ul>
+						<li id="borderStyleSet"><script type="text/javascript">document.write(GetMessage("sStyle"));</script>
+							<select name="borderstyle" size="1" class="selectStyle">
+								<option value="solid" selected="selected">Solid</option>
+								<option value="groove">Groove</option>
+								<option value="ridge">Ridge</option>
+								<option value="inset">Inset</option>
+								<option value="Outset">Outset</option>
+							</select>
+						</li>
+						<li id="borderSizeSet"><script type="text/javascript">document.write(GetMessage("sSize"));</script>
+							<select name="bordersize" size="1" class="selectStyle" onblur="onBlurAction('border');">
+								<option value="0">
+									<script type="text/javascript">document.write(GetMessage("vOff"));</script>
+								</option>
+								<option value="1">1px</option>
+								<option value="2" selected="selected">2px</option>
+								<option value="3">3px</option>
+								<option value="4">4px</option>
+								<option value="5">5px</option>
+							</select>
+						</li>
+						<li id="borderColorSet"><script type="text/javascript">document.write(GetMessage("sColor"));</script>
+							<select name="bordercolor" size="1" class="selectStyle">
+								<option value="white" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vWhite"));</script>
+								</option>
+								<option value="black">
+									<script type="text/javascript">document.write(GetMessage("vBlack"));</script>
+								</option>
+								<option value="deepskyblue">
+									<script type="text/javascript">document.write(GetMessage("vDeepskyblue"));</script>
+								</option>
+								<option value="royalblue">
+									<script type="text/javascript">document.write(GetMessage("vRoyalblue"));</script>
+								</option>
+								<option value="green">
+									<script type="text/javascript">document.write(GetMessage("vGreen"));</script>
+								</option>
+								<option value="red">
+									<script type="text/javascript">document.write(GetMessage("vRed"));</script>
+								</option>
+								<option value="orange">
+									<script type="text/javascript">document.write(GetMessage("vOrange"));</script>
+								</option>
+								<option value="navy">
+									<script type="text/javascript">document.write(GetMessage("vNavy"));</script>
+								</option>
+								<option value="gray">
+									<script type="text/javascript">document.write(GetMessage("vGray"));</script>
+								</option>
+								<option value="yellow">
+									<script type="text/javascript">document.write(GetMessage("vYellow"));</script>
+								</option>
+								<option value="#008080">
+									<script type="text/javascript">document.write(GetMessage("vTeal"));</script>
+								</option>
+								<option value="#FF1493">
+									<script type="text/javascript">document.write(GetMessage("vDeeppink"));</script>
+								</option>
+								<option value="#32CD32">
+									<script type="text/javascript">document.write(GetMessage("vLimegreen"));</script>
+								</option>
+								<option value="#DEB887">
+									<script type="text/javascript">document.write(GetMessage("vBurlywood"));</script>
+								</option>
+								<option value="#B22222">
+									<script type="text/javascript">document.write(GetMessage("vFirebrick"));</script>
+								</option>
+								<!-- 3.00 -->
+								<option value="#760787">
+									<script type="text/javascript">document.write(GetMessage("vPurple"));</script>
+								</option>
+								<option value="#F5F5DC">
+									<script type="text/javascript">document.write(GetMessage("vBeige"));</script>
+								</option>
+								<option value="#D2691E">
+									<script type="text/javascript">document.write(GetMessage("vChocolate"));</script>
+								</option>
+								<option value="#7FFF00">
+									<script type="text/javascript">document.write(GetMessage("vChartreuse"));</script>
+								</option>
+								<option value="#F08080">
+									<script type="text/javascript">document.write(GetMessage("vLightCoral"));</script>
+								</option>
+							</select>
+						</li>
+						<li id="borderRadiusSet"><script type="text/javascript">document.write(GetMessage("sRadius"));</script>
+							<select name="borderradiusTopLeft" size="1" class="selectStyle">
+								<option value="5px">5</option>
+								<option value="10px">10</option>
+								<option value="15px">15</option>
+								<option value="20px">20</option>
+								<option value="25px" selected="selected">25</option>
+								<option value="30px">30</option>
+								<option value="35px">35</option>
+								<option value="40px">40</option>
+								<option value="45px">45</option>
+								<option value="50px">50</option>
+							</select>
+							<select name="borderradiusTopRight" size="1" class="selectStyle">
+								<option value="5px">5</option>
+								<option value="10px" selected="selected">10</option>
+								<option value="15px">15</option>
+								<option value="20px">20</option>
+								<option value="25px">25</option>
+								<option value="30px">30</option>
+								<option value="35px">35</option>
+								<option value="40px">40</option>
+								<option value="45px">45</option>
+								<option value="50px">50</option>
+							</select>
+							<select name="borderradiusBottomRight" size="1" class="selectStyle">
+								<option value="5px">5</option>
+								<option value="10px" selected="selected">10</option>
+								<option value="15px">15</option>
+								<option value="20px">20</option>
+								<option value="25px">25</option>
+								<option value="30px">30</option>
+								<option value="35px">35</option>
+								<option value="40px">40</option>
+								<option value="45px">45</option>
+								<option value="50px">50</option>
+							</select>
+							<select name="borderradiusBottomLeft" size="1" class="selectStyle">
+								<option value="5px">5</option>
+								<option value="10px">10</option>
+								<option value="15px">15</option>
+								<option value="20px">20</option>
+								<option value="25px" selected="selected">25</option>
+								<option value="30px">30</option>
+								<option value="35px">35</option>
+								<option value="40px">40</option>
+								<option value="45px">45</option>
+								<option value="50px">50</option>
+							</select>
+							<span class="smallText">px</span>
+						</li>
+					</ul>
+				</div>
+
+				<div class="opener" id="BackgroundSettings">
+					<b>
+						<script type="text/javascript">document.write(GetMessage("stringBackground"));</script>
+						<img src="images/new/plus.png" height="9" width="9" alt="open" align="absmiddle" />
+					</b>
+				</div>
+				<div class="myContent">
+					<ul>
+						<li id="bgColorSet"><script type="text/javascript">document.write(GetMessage("sStyle"));</script>
+							<select name="backgroundcolor" size="1" class="selectStyle">
+								<option	value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e))">BlackShine</option>
+								<option value="black">
+									<script type="text/javascript">document.write(GetMessage("vBlack"));</script>
+								</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#959595), color-stop(46%,#0d0d0d), color-stop(50%,#010101), color-stop(53%,#0a0a0a), color-stop(76%,#4e4e4e), color-stop(87%,#383838), color-stop(100%,#1b1b1b))">BlackMirror</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#deefff), color-stop(100%,#98bede))">BlueLight</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#a7cfdf), color-stop(100%,#23538a))">BlueShine</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#c5deea), color-stop(31%,#8abbd7), color-stop(100%,#066dab))">BlueModern</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1e767), color-stop(100%,#feb645))">OrangeLight</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#eab92d), color-stop(100%,#c79810))">Golden Autumn</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6e6b4), color-stop(100%,#ed9017))">OrangeShine</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5))">Ice</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0b7a1), color-stop(50%,#8c3310), color-stop(51%,#752201), color-stop(100%,#bf6e4e))">Cooper</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4ddb4), color-stop(17%,#83c783), color-stop(33%,#52b152), color-stop(67%,#008a00), color-stop(83%,#005700), color-stop(100%,#002400))">GreenModern</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#c9de96), color-stop(44%,#8ab66b), color-stop(100%,#398235))">Greenfield</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4e391), color-stop(50%,#61c419), color-stop(100%,#b4e391))">GreenMirror</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#cedce7), color-stop(100%,#596a72))">SilverSurf</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f6f6), color-stop(21%,#dbdce2), color-stop(49%,#b8bac6), color-stop(80%,#dddfe3), color-stop(100%,#f5f6f6))">SilverMirror</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404))">OnFire</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404))">RedShine</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#febbbb), color-stop(45%,#fe9090), color-stop(100%,#ff5c5c))">Girlie</option>
+								<option value="-webkit-gradient(linear, left top, left bottom, color-stop(0%,#cb60b3), color-stop(50%,#ad1283), color-stop(100%,#de47ac))">PinkMirror</option>
+								<!-- 3.00 -->
+								<option value="-webkit-gradient(linear,	left bottom, left top, color-stop(0.23, #C8C9C7), color-stop(0.9, #3B168A))">Purple Flavor</option>
+								<option value="-webkit-gradient(linear,	left bottom, left top, color-stop(0.1, #000000), color-stop(0.9, #063A8F))" selected="selected">DarkBlueNight</option>
+								<option value="-webkit-gradient(linear,	left top, left bottom, color-stop(0.17, #660000), color-stop(0.9, #EBE00E))">Burning</option>
+								<option value="-webkit-gradient(linear,	left top, left bottom,	color-stop(0.17, #B56107), color-stop(0.9, #B39004), color-stop(0.77, #D6CD1E),	color-stop(0.25, #B38909))">NewAutumn</option>
+								<option value="-webkit-gradient(linear,	left top, left bottom,	color-stop(0.17, #F7F7F7), color-stop(0.9, #808080), color-stop(0.77, #000000),	color-stop(0.25, #E6E6E6))">Shining	Steel</option>
+								<option value="-webkit-gradient(linear,	left bottom, left top, color-stop(0.23, #B5FA24), color-stop(0.62, #0CD1D1))">Good Feeling</option>
+								<option value="-webkit-gradient(linear,	left top, left bottom,	color-stop(0, #E40303),	color-stop(0.25, #FF8C00),	color-stop(0.5, #FFEE00), color-stop(0.6, #008026),	color-stop(0.75, #004DFF),	color-stop(0.9, #760787))">Rainbow</option>
+							</select>
+						</li>
+						<li id="backgroundOpacity"><script type="text/javascript">document.write(GetMessage("sOpacity"));</script>
+							<select name="opacity" size="1" class="selectStyle">
+								<option value="1.00" selected="selected">100%</option>
+								<option value="0.90">90%</option>
+								<option value="0.80">80%</option>
+								<option value="0.70">70%</option>
+								<option value="0.60">60%</option>
+								<option value="0.50">50%</option>
+								<option value="0.40">40%</option>
+								<option value="0.30">30%</option>
+								<option value="0.20">20%</option>
+								<option value="0.10">10%</option>
+								<option value="0.00">0%</option>
+							</select>
+						</li>
+						<li id="backgroundOpacityAlt"><script type="text/javascript">document.write(GetMessage("sOpacity"));</script>
+							<select name="opacityAlt" size="1" class="selectStyle">
+								<option value="1.00" selected="selected">100%</option>
+								<option value="0.00">0%</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+
+				<div class="opener" id="EffectSettings">
+					<b><script type="text/javascript">document.write(GetMessage("stringEffect"));</script>
+						<img src="images/new/plus.png" height="9" width="9" alt="open" align="absmiddle" /></b>
+				</div>
+				<div class="myContent">
+					<ul>
+						<li><script type="text/javascript">document.write(GetMessage("sGlass"));</script>
+							<select name="glasses" size="1" class="selectStyle">
+								<option value="0.3">
+									<script type="text/javascript">document.write(GetMessage("vStrong"));</script>
+								</option>
+								<option value="0.2" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vNormal"));</script>
+								</option>
+								<option value="0.1">
+									<script type="text/javascript">document.write(GetMessage("vWeak"));</script>
+								</option>
+								<option value="0.0">
+									<script type="text/javascript">document.write(GetMessage("vOff"));</script>
+								</option>
+						</select></li>
+						<span id="glowSet" class="nopadding">
+							<li><script type="text/javascript">document.write(GetMessage("sGlow"));</script>
+								<select name="glow" size="1" class="selectStyle"  onblur="onBlurAction('glow');">
+									<option value="10px">
+										<script type="text/javascript">document.write(GetMessage("vOn"));</script>
+									</option>
+									<option value="0" selected="selected">
+										<script type="text/javascript">document.write(GetMessage("vOff"));</script>
+									</option>
+								</select>
+							</li>
+						</span>
+						<li id="glowSetColor"><script type="text/javascript">document.write(GetMessage("sGlowColor"));</script>
+							<select name="glowColor" size="1" class="selectStyle">
+								<option value="white" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vWhite"));</script>
+								</option>
+								<option value="silver">
+									<script type="text/javascript">document.write(GetMessage("vSilver"));</script>
+								</option>
+								<option value="deepskyblue">
+									<script type="text/javascript">document.write(GetMessage("vDeepskyblue"));</script>
+								</option>
+								<option value="royalblue">
+									<script type="text/javascript">document.write(GetMessage("vRoyalblue"));</script>
+								</option>
+								<option value="green">
+									<script type="text/javascript">document.write(GetMessage("vGreen"));</script>
+								</option>
+								<option value="red">
+									<script type="text/javascript">document.write(GetMessage("vRed"));</script>
+								</option>
+								<option value="orange">
+									<script type="text/javascript">document.write(GetMessage("vOrange"));</script>
+								</option>
+								<option value="navy">
+									<script type="text/javascript">document.write(GetMessage("vNavy"));</script>
+								</option>
+								<option value="gray">
+									<script type="text/javascript">document.write(GetMessage("vGray"));</script>
+								</option>
+								<option value="yellow">
+									<script type="text/javascript">document.write(GetMessage("vYellow"));</script>
+								</option>
+								<option value="#008080">
+									<script type="text/javascript">document.write(GetMessage("vTeal"));</script>
+								</option>
+								<option value="#FF1493">
+									<script type="text/javascript">document.write(GetMessage("vDeeppink"));</script>
+								</option>
+								<option value="#32CD32">
+									<script type="text/javascript">document.write(GetMessage("vLimegreen"));</script>
+								</option>
+								<option value="#DEB887">
+									<script type="text/javascript">document.write(GetMessage("vBurlywood"));</script>
+								</option>
+								<option value="#B22222">
+									<script type="text/javascript">document.write(GetMessage("vFirebrick"));</script>
+								</option>
+								<!-- 3.00 -->
+								<option value="#760787">
+									<script type="text/javascript">document.write(GetMessage("vPurple"));</script>
+								</option>
+								<option value="#F5F5DC">
+									<script type="text/javascript">document.write(GetMessage("vBeige"));</script>
+								</option>
+								<option value="#D2691E">
+									<script type="text/javascript">document.write(GetMessage("vChocolate"));</script>
+								</option>
+								<option value="#7FFF00">
+									<script type="text/javascript">document.write(GetMessage("vChartreuse"));</script>
+								</option>
+								<option value="#F08080">
+									<script type="text/javascript">document.write(GetMessage("vLightCoral"));</script>
+								</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+				<div class="opener" id="ClockSettings">
+					<b>
+						<script type="text/javascript">document.write(GetMessage("stringDate"));</script>
+						<img src="images/plus.png" height="9" width="9" alt="open" align="absmiddle" />
+					</b>
+				</div>
+				<div class="myContent">
+					<ul>
+						<li><script type="text/javascript">document.write(GetMessage("sShow"));</script>
+							<!-- <select name="datemode" size="1" class="selectStyle" onchange="onBlurAction('date');"> -->
+							<select name="datemode" size="1" class="selectStyle" onblur="onBlurAction('date');">
+								<option value="block">
+									<script type="text/javascript">document.write(GetMessage("vOn"));</script>
+								</option>
+								<option value="none" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vOff"));</script>
+								</option>
+							</select>
+						</li>
+						<li id="yearSet"><script type="text/javascript">document.write(GetMessage("sYear"));</script>
+							<select name="yearMode" size="1" class="selectStyle">
+								<option value="on" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vOn"));</script>
+								</option>
+								<option value="off">
+									<script type="text/javascript">document.write(GetMessage("vOff"));</script>
+								</option>
+							</select>
+						</li>
+						<li id="shortSet"><script type="text/javascript">document.write(GetMessage("sShort"));</script>
+							<select name="shortMode" size="1" class="selectStyle">
+								<option value="on">
+									<script type="text/javascript">document.write(GetMessage("vOn"));</script>
+								</option>
+								<option value="off" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vOff"));</script>
+								</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+		<div id="save" class="button" onclick="alert(GetMessage('stringSave'));saveSettings();">
+			<script type="text/javascript">document.write(GetMessage("sApply"));</script>
+		</div>
+		<div id="close" class="button" onclick="reset();closeSettings();">
+			<script type="text/javascript">document.write(GetMessage("sClose"));</script>
+		</div>
+
+		<div class="bFoot">LiveClock PRO 3.2 <!-- .Build3.20.0001.20130226 --><span id="updateStatus"></span></div>
+	</div>
+</body>
+</html>

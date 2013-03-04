@@ -1,0 +1,238 @@
+/********************************
+ *			Version 1.4			*
+ *			   Author			*
+ *		    Marco Büttner		*
+ ********************************/
+
+/* general */
+body {
+	margin: 0;
+	padding: 0 5px;
+	font-size: 98px;
+}
+
+span {
+	width: 424px;
+	height: 94px;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+/* All select elements on page */
+select {
+  position: relative;
+  font-size: 24px;
+}
+
+/* Style by class. Effects the text of the contained options. */
+.selectStyle {
+  color: deepskyblue;
+  background: #000;
+  border: 1px solid #444;
+  border-radius:0;
+}
+
+ul {
+	padding: 0 5px;
+	margin: 0 5px;
+}
+
+.smallText {
+	font-size: 12px;
+}
+
+.nopadding {
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+
+#updateStatus {
+	font-size: 16px;
+	color: deepskyblue;
+	text-decoration: none;
+}
+
+#updateStatus a {
+	font-size: 16px;
+	color: deepskyblue;
+	text-decoration: none;
+}
+
+/* main */
+#clockbox {
+	width: 480px;
+	height: 115px;
+	position: relative;
+}
+
+#background {
+	width: 460px;
+	height: 96px;
+	position: absolute;
+	left: 0;
+	top: 4px;
+	z-index: 1;
+}
+
+#clocklayer {
+	width: 428px;
+	height: 94px;
+	position: absolute;
+	left: 17px;
+	top: 0;
+	z-index: 2;
+}
+
+#time {
+	width: auto;
+	position: relative;
+	top: -5px;
+	margin: 0 auto;
+}
+
+#foreground {
+	width: 460px;
+	height: 96px;
+	position: absolute;
+	left: 0;
+	top: 4px;
+	z-index: 3;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c4c4c), color-stop(12%, #595959), color-stop(25%, #666666), color-stop(39%, #474747), color-stop(50%, #2c2c2c), color-stop(51%, #000000), color-stop(60%, #111111), color-stop(76%, #2b2b2b), color-stop(91%, #1c1c1c), color-stop(100%, #131313));
+}
+
+#dateBG {
+	border-radius: 20px;
+	position: absolute;
+	top: 95px;
+	left: 80px;
+	height: 25px;
+	width: 300px;
+	z-index: 4;
+}
+
+#datelayer {
+	position: absolute;
+	/*top: 96px;*/
+	left: 80px;
+	height: 25px;
+	width: 300px;
+	text-align: center;
+	font-size: 20px;
+	z-index: 5;
+}
+
+/* settings */
+#settingbox {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 480px;
+	height: 754px;
+	background: #000;
+	color: #fff;
+	display: none;
+}
+
+.opener {
+	margin: 15px;
+	padding: 0 0 0 10px;
+	font-size: 36px;
+	color: deepskyblue;
+	background: #0A0A0A;
+	border-radius: 10px;
+	font-weight: bold;
+	border: 1px solid #333;
+}
+
+.
+.myContent {
+	color: #fff;
+}
+
+.bHead {
+	width: 478px;
+	height: 48px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	text-align: center;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(69,
+		72, 77, 1) ), color-stop(100%, rgba(0, 0, 0, 1) ) );
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #fff;
+}
+
+.bHead h3 {
+	padding: 0;
+	margin: 0;
+	font-size: 42px;
+	color: deepskyblue;
+}
+
+.bBody {
+	width: 480px;
+	height: 550px;
+	font-size: 24px;
+	color: #fff;
+	overflow: auto;
+}
+
+.bBody li {
+	margin: 0 15px;
+	padding: 0 15px;
+	list-style: none;
+}
+
+.button {
+	padding: 16px 0;
+	width: 160px;
+	position: absolute;
+	font-weight: bold;
+	font-size: 24px;
+	border: 2px solid #eaeaea;
+	border-radius: 10px;
+	text-align: center;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(69,
+		72, 77, 1) ), color-stop(100%, rgba(0, 0, 0, 1) ) );
+	margin: 15px;
+}
+
+#save {
+	top: 620px;
+	left: 25px;
+}
+
+#close {
+	top: 620px;
+	right: 25px;
+}
+
+.bFoot {
+	position: absolute;
+	top: 725px;
+	left: 0;
+	padding: 5px 0;
+	width: 478px;
+	height: 24px;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	text-align: center;
+	font-size: 18px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(125,
+		185, 232, 0) ), color-stop(78%, rgba(51, 109, 170, 0) ),
+		color-stop(100%, rgba(30, 87, 153, 1) ) );
+	border-top: 1px solid #fff;
+	border-right: 1px solid #fff;
+	border-left: 1px solid #fff;
+}
+
+#advertise {
+	position:absolute;
+	width:480px;
+	height:60px;
+	top:500px;
+	left:0;
+}
