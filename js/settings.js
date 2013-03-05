@@ -10,23 +10,15 @@ var newTop = null;
 function openSettings()
 {
 	if (g_currentDirection == g_LANDSCAPE)
-	{
 		alert(GetMessage("stringError"));
-	}
 	else
 	{
     	if(getFullmodeSize == "480,762,0,0" || getFullmodeSize == null)
-    	{
     		resize(g_fullwidth, g_fullheight);
-    	}
     	else if(getFullmodeSize == "240,381,0,0" || deviceCode == "GT-S533")
-    	{
     		resize(g_wqvga_fullwidth, g_wqvga_fullheight);
-    	}
     	else
-    	{
     		resize(g_hvga_fullwidth, g_hvga_fullheight);
-    	}
 		
     	var mySettings = getElement("settingbox");
 		mySettings.style.display = "block";
@@ -43,6 +35,7 @@ function openSettings()
 function closeSettings()
 {
 	var dateOn = widget.preferenceForKey("datemode");
+	
 	if(dateOn == "block") 
 	{
 		var mySettings = getElement("settingbox");
@@ -51,17 +44,11 @@ function closeSettings()
 		myClock.style.display = "block";
 		
 	   	if(getFullmodeSize == "480,762,0,0" || getFullmodeSize == null)
-	   	{
 	   		resize(g_idlewidth, g_idledateheight);
-	   	}
 	   	else if(getFullmodeSize == "240,381,0,0" || deviceCode == "GT-S533")
-	   	{
 	   		resize(g_wqvga_idlewidth, g_wqvga_idledateheight);
-	   	}
 	   	else
-	   	{
 	   		resize(g_hvga_idlewidth, g_hvga_idledateheight);
-	   	}
 	}
 	else
 	{
@@ -71,17 +58,11 @@ function closeSettings()
 		myClock.style.display = "block";
 			
 	  	if(getFullmodeSize == "480,762,0,0" || getFullmodeSize == null)
-	   	{
 	   		resize(g_idlewidth, g_idleheight);
-	   	}
 	   	else if(getFullmodeSize == "240,381,0,0" || deviceCode == "GT-S533")
-	   	{
 	   		resize(g_wqvga_idlewidth, g_wqvga_idleheight);
-	   	}
 	   	else
-	   	{
 	   		resize(g_hvga_idlewidth, g_hvga_idleheight);
-	   	}
 	}
 }
 
@@ -104,9 +85,8 @@ function loadSettings()
 			document.forms["selectForm"].opacity.value = widget.preferenceForKey("opacity");
 		}
 		else
-		{
 			document.forms["selectForm"].opacityAlt.value = widget.preferenceForKey("opacityAlt");
-		}
+		
 		document.forms["selectForm"].alignment.value = widget.preferenceForKey("alignment");
 		// Border Values
 		document.forms["selectForm"].borderstyle.value = widget.preferenceForKey("borderstyle");
@@ -127,8 +107,8 @@ function loadSettings()
 		
 		if(badaVersion == "Bada/2.0")
 		{
-		document.forms["selectForm"].glow.value = widget.preferenceForKey("glow");
-		document.forms["selectForm"].glowColor.value = widget.preferenceForKey("glowColor");
+			document.forms["selectForm"].glow.value = widget.preferenceForKey("glow");
+			document.forms["selectForm"].glowColor.value = widget.preferenceForKey("glowColor");
 		}
 		
 		saveSettings();
@@ -178,9 +158,7 @@ function saveSettings()
 	var glowColor = document.forms["selectForm"].glowColor.value;
 	
 	if(fontcolor == backgroundcolor)
-	{
 		alert(GetMessage("ErrorColor"));
-	}
 	else
 	{
 		var toChange = getElement("background");
@@ -212,13 +190,9 @@ function saveSettings()
 		toChange4.style.opacity = glasses;
 		toChange4.style.left = bordersize+"px";
 		if(getFullmodeSize == "480,762,0,0" || getFullmodeSize == null)
-		{
 			newBordersize = 4 + parseInt(document.forms["selectForm"].bordersize.value);
-		}
 		else
-		{
 			newBordersize = 2 + parseInt(document.forms["selectForm"].bordersize.value);
-		}
 		toChange4.style.top = newBordersize+"px";
 		toChange4.style.borderRadius = borderradiusTopLeft+" "+borderradiusTopRight+" "+borderradiusBottomLeft+" "+borderradiusBottomRight;
 	
@@ -234,17 +208,11 @@ function saveSettings()
 		
 		var toChange6 = getElement("datelayer");
 		if(getFullmodeSize == "480,762,0,0" || getFullmodeSize == null)
-		{
 			newTop = 90 + newBordersize;
-		}
 		else if(getFullmodeSize == "240,381,0,0" || deviceCode == "GT-S533")
-		{
 			newTop = 44 + newBordersize;
-		}
 		else
-		{
 			newTop = 59 + newBordersize;
-		}
 		toChange6.style.top = newTop+"px";
 		toChange6.style.color = fontcolor;
 		toChange6.style.display = datemode;

@@ -23,51 +23,10 @@ var g_wqvga_fullwidth=240;
 var g_wqvga_fullheight=400;
 var type = "full";
 
-var ShortOfWeek = new Array(7);
-ShortOfWeek[0] = GetMessage("shortSun");
-ShortOfWeek[1] = GetMessage("shortMon");
-ShortOfWeek[2] = GetMessage("shortTue");
-ShortOfWeek[3] = GetMessage("shortWed");
-ShortOfWeek[4] = GetMessage("shortThu");
-ShortOfWeek[5] = GetMessage("shortFri");
-ShortOfWeek[6] = GetMessage("shortSat");
-
-var ShortOfYear = new Array(12);
-ShortOfYear[0] = GetMessage("shortJan");
-ShortOfYear[1] = GetMessage("shortFeb");
-ShortOfYear[2] = GetMessage("shortMar");
-ShortOfYear[3] = GetMessage("shortApr");
-ShortOfYear[4] = GetMessage("shortMay");
-ShortOfYear[5] = GetMessage("shortJun");
-ShortOfYear[6] = GetMessage("shortJul");
-ShortOfYear[7] = GetMessage("shortAug");
-ShortOfYear[8] = GetMessage("shortSep");
-ShortOfYear[9] = GetMessage("shortOct");
-ShortOfYear[10] = GetMessage("shortNov");
-ShortOfYear[11] = GetMessage("shortDec");
-
-var DaysOfWeek = new Array(7);
-DaysOfWeek[0] = GetMessage("tSunday");
-DaysOfWeek[1] = GetMessage("tMonday");
-DaysOfWeek[2] = GetMessage("tTuesday");
-DaysOfWeek[3] = GetMessage("tWednesday");
-DaysOfWeek[4] = GetMessage("tThursday");
-DaysOfWeek[5] = GetMessage("tFriday");
-DaysOfWeek[6] = GetMessage("tSaturday");
-
-var MonthsOfYear = new Array(12);
-MonthsOfYear[0] = GetMessage("tJanuary");
-MonthsOfYear[1] = GetMessage("tFebruary");
-MonthsOfYear[2] = GetMessage("tMarch");
-MonthsOfYear[3] = GetMessage("tApril");
-MonthsOfYear[4] = GetMessage("tMay");
-MonthsOfYear[5] = GetMessage("tJune");
-MonthsOfYear[6] = GetMessage("tJuly");
-MonthsOfYear[7] = GetMessage("tAugust");
-MonthsOfYear[8] = GetMessage("tSeptember");
-MonthsOfYear[9] = GetMessage("tOctober");
-MonthsOfYear[10] = GetMessage("tNovember");
-MonthsOfYear[11] = GetMessage("tDecember");
+var ShortOfWeek = [GetMessage("shortSun"), GetMessage("shortMon"), GetMessage("shortTue"), GetMessage("shortWed"), GetMessage("shortThu"), GetMessage("shortFri"), GetMessage("shortSat")];
+var ShortOfYear = [GetMessage("shortJan"), GetMessage("shortFeb"), GetMessage("shortMar"), GetMessage("shortApr"), GetMessage("shortMay"), GetMessage("shortJun"), GetMessage("shortJul"), GetMessage("shortAug"), GetMessage("shortSep"), GetMessage("shortOct"), GetMessage("shortNov"), GetMessage("shortDec")];
+var DaysOfWeek = [GetMessage("tSunday"), GetMessage("tMonday"), GetMessage("tTuesday"), GetMessage("tWednesday"), GetMessage("tThursday"), GetMessage("tFriday"), GetMessage("tSaturday")];
+var MonthsOfYear = [GetMessage("tJanuary"), GetMessage("tFebruary"), GetMessage("tMarch"), GetMessage("tApril"), GetMessage("tMay"), GetMessage("tJune"), GetMessage("tJuly"), GetMessage("tAugust"), GetMessage("tSeptember"), GetMessage("tOctober"), GetMessage("tNovember"), GetMessage("tDecember")];
 
 var timerUpdate, time, date;
 
@@ -152,13 +111,9 @@ function show()
 	}
 	
 	if(yearOn == "on")
-	{
 		year = today.getFullYear();
-	}
 	else
-	{
 		year = "";
-	}
 	
 	if(hours<=9)
 		hours="0"+hours;
@@ -258,13 +213,15 @@ function redesign()
 {
 	var dateOn = widget.preferenceForKey("datemode");
 	
-	if(type == "lite") {
+	if(type == "lite")
+	{
 		getElement("background").style.borderRadius = "25px 10px 25px 10px";
 		getElement("foreground").style.borderRadius = "25px 10px 25px 10px";
 		getElement("clocklayer").style.textAlign = "center";
 	}
 	
-	if(badaVersion != "Bada/2.0" && deviceCode== "GT-S850" || badaVersion != "Bada/2.0" && deviceCode== "SCH-F859" || badaVersion != "Bada/2.0" && deviceCode== "GT-S853" || badaVersion != "Bada/2.0" && deviceCode== "SHW-M210") {
+	if(badaVersion != "Bada/2.0" && deviceCode== "GT-S850" || badaVersion != "Bada/2.0" && deviceCode== "SCH-F859" || badaVersion != "Bada/2.0" && deviceCode== "GT-S853" || badaVersion != "Bada/2.0" && deviceCode== "SHW-M210")
+	{
 		getElement("clockbox").style.width = "450px";
 		getElement("background").style.width = "434px";
 		getElement("background").style.top = "4px";
@@ -277,15 +234,15 @@ function redesign()
 		document.getElementsByTagName("span").style.top = "10px";
 		getElement("date").style.left = "110px";
 		getElement("time").style.top = "10px";
-		if(dateOn == "block") {
+		
+		if(dateOn == "block")
 			resize(g_idlewidthold, g_idledateheight);
-		}
-		else {
+		else
 			resize(g_idlewidthold, g_idleheight);
-		}
 	}
 	
-	if(badaVersion != "Bada/2.0" && deviceCode== "GT-S723" || badaVersion != "Bada/2.0" && deviceCode== "SHW-M270" || badaVersion != "Bada/2.0" && deviceCode== "SCH-W689" || badaVersion != "Bada/2.0" && deviceCode== "GT-S578" || badaVersion != "Bada/2.0" && deviceCode== "GT-S575" || badaVersion != "Bada/2.0" && deviceCode== "GT-S533" || badaVersion != "Bada/2.0" && deviceCode== "GT-S525") {
+	if(badaVersion != "Bada/2.0" && deviceCode== "GT-S723" || badaVersion != "Bada/2.0" && deviceCode== "SHW-M270" || badaVersion != "Bada/2.0" && deviceCode== "SCH-W689" || badaVersion != "Bada/2.0" && deviceCode== "GT-S578" || badaVersion != "Bada/2.0" && deviceCode== "GT-S575" || badaVersion != "Bada/2.0" && deviceCode== "GT-S533" || badaVersion != "Bada/2.0" && deviceCode== "GT-S525")
+	{
 		getElement("clockbox").style.width = "225px";
 		getElement("background").style.width = "217px";
 		getElement("background").style.top = "2px";
@@ -299,12 +256,10 @@ function redesign()
 		getElement("date").style.left = "55px";
 		getElement("time").style.top = "5px";
 		
-		if(dateOn == "block") {
+		if(dateOn == "block") 
 			resize(g_wqvga_idlewidthold, g_wqvga_idledateheight);
-		}
-		else {
+		else
 			resize(g_wqvga_idlewidthold, g_wqvga_idleheight);
-		}
 	}
 }
 
@@ -321,9 +276,7 @@ function showItem()
 	if(type == "full")
 	{
 		if(deviceCode == "" || deviceCode == null || deviceCode == "GT-S860" || deviceCode == "SHW-M410" || deviceCode == "GT-S853" || deviceCode == "SHW-M210" || deviceCode == "GT-S850" || deviceCode == "SCH-F859" || deviceCode == "GT-S725" || deviceCode == "GT-S723" || deviceCode == "SHW-M270" || deviceCode == "SCH-W689" || deviceCode == "GT-S578" || deviceCode == "GT-S575" || deviceCode == "GT-S538")
-		{
 			hide("backgroundOpacityAlt");
-		}
 		else
 		{
 			hide("foreground");
@@ -336,13 +289,9 @@ function showItem()
 		{
 			showElement("glowSet");
 			if(glowCheck == "10px")
-			{
 				showElement("glowSetColor");
-			}
 			else
-			{
 				hide("glowSetColor");
-			}
 		}
 		else
 		{
@@ -373,9 +322,7 @@ function showItem()
 		hide("shortSet");
 		
 		if(deviceCode == "" || deviceCode == null || deviceCode == "GT-S860" || deviceCode == "SHW-M410" || deviceCode == "GT-S853" || deviceCode == "SHW-M210" || deviceCode == "GT-S850" || deviceCode == "SCH-F859" || deviceCode == "GT-S725" || deviceCode == "GT-S723" || deviceCode == "SHW-M270" || deviceCode == "SCH-W689" || deviceCode == "GT-S578" || deviceCode == "GT-S575" || deviceCode == "GT-S538")
-		{
 			hide("backgroundOpacityAlt");
-		}
 		else
 		{
 			hide("foreground");
@@ -392,7 +339,8 @@ function showItem()
  * @since 3.1
  * @author Marco Büttner
  */
-function showElement(id) {
+function showElement(id)
+{
 	getElement(id).style.display = "block";
 }
 
@@ -402,7 +350,8 @@ function showElement(id) {
  * @since 3.1
  * @author Marco Büttner
  */
-function hide(id) {
+function hide(id)
+{
 	getElement(id).style.display = "none";
 }
 
@@ -418,32 +367,20 @@ function dateMode()
 	if(dateOn == "block")
     {
     	if(getFullmodeSize == "480,762,0,0" || getFullmodeSize == null)
-    	{
     		resize(g_idlewidth, g_idledateheight);
-    	}
     	else if(getFullmodeSize == "240,381,0,0" || deviceCode == "GT-S533")
-    	{
     		resize(g_wqvga_idlewidth, g_wqvga_idledateheight);
-    	}
     	else
-    	{
     		resize(g_hvga_idlewidth, g_hvga_idledateheight);
-    	}
     }
 	else
 	{
     	if(getFullmodeSize == "480,762,0,0" || getFullmodeSize == null)
-    	{
     		resize(g_idlewidth, g_idleheight);
-    	}
     	else if(getFullmodeSize == "240,381,0,0" || deviceCode == "GT-S533")
-    	{
     		resize(g_wqvga_idlewidth, g_wqvga_idleheight);
-    	}
     	else
-    	{
     		resize(g_hvga_idlewidth, g_hvga_idleheight);
-    	}
 	}	
 }
 
@@ -473,7 +410,7 @@ function reload()
     
     try
 	{
-		widget.addEventListener("widgetsleepawakened", awake, false);
+    	widget.addEventListener("widgetsleepawakened", awake, false);
 	    widget.addEventListener("widgetgoasleep", sleep, false);
 	    widget.addEventListener("widgetendkey", closeSettings, false);
 	    widget.addEventListener("widgetlocaltimechanged", onLocalTimeChanged, false);
@@ -493,6 +430,7 @@ function reload()
 function onBlurAction(id)
 {
 	var form = document.selectForm;
+	
 	switch(id)
 	{
 		case 'date':
@@ -525,13 +463,9 @@ function onBlurAction(id)
 		
 		case 'glow':
 			if(form.glow.selectedIndex == 0)
-			{
 				showElement('glowSetColor');
-			}
 			else
-			{
-				hide('glowSetColor');
-			}		
+				hide('glowSetColor');	
 		break;
 	}
 }
