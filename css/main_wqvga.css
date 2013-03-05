@@ -114,9 +114,9 @@ one
 #dateBG {
 	border-radius: 10px;
 	position: absolute;
-	top: 48px;
-	left: 40px;
-	height: 13px;
+	top: 46px;
+	left: 35px;
+	height: 15px;
 	width: 150px;
 	z-index: 4;
 }
@@ -124,11 +124,11 @@ one
 #datelayer {
 	position: absolute;
 	/*top: 96px;*/
-	left: 40px;
+	left: 18px;
 	height: 13px;
-	width: 150px;
+	width: 190px;
 	text-align: center;
-	font-size: 10px;
+	font-size: 12px;
 	z-index: 5;
 }
 
