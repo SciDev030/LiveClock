@@ -34,7 +34,7 @@ function openSettings()
  */
 function closeSettings()
 {
-	var dateOn = widget.preferenceForKey("datemode");
+	var dateOn = load("datemode");
 	
 	if(dateOn == "block") 
 	{
@@ -67,48 +67,89 @@ function closeSettings()
 }
 
 /**
+ * save value to key on widget data storage
+ * 
+ * @param key {String}	Key where the value saved
+ * @param value {String} Value which must saved
+ * @see load(key)
+ * @author Marco Büttner
+ * @since 3.2
+ */
+function save(key, value)
+{
+	try
+	{
+		widget.setPreferenceForKey(value, key);
+	}
+	catch (e)
+	{
+		localStorage.setItem(key, value);
+	}
+}
+
+/**
+ * load data from the widget data storage by key.
+ * 
+ * @param key {String}	To get value of the key
+ * @see save(key, value)
+ * @author Marco Büttner
+ * @since 3.2
+ */
+function load(key)
+{
+	try
+	{
+		widget.preferenceForKey(key);
+	}
+	catch (e)
+	{
+		localStorage.getItem(key);
+	}
+}
+
+/**
  * This function load design and settings they was change by the user
  * @since 2.0
  * @author Marco Büttner
  */
 function loadSettings()
-{
+{	
 	try
 	{
 		// Text Values
-		document.forms["selectForm"].fontStyle.value =	widget.preferenceForKey("fontStyle");
-		document.forms["selectForm"].fontWeight.value = widget.preferenceForKey("fontWeight");
-		document.forms["selectForm"].fontcolor.value =	widget.preferenceForKey("fontcolor");
+		document.forms["selectForm"].fontStyle.value =	load("fontStyle");
+		document.forms["selectForm"].fontWeight.value = load("fontWeight");
+		document.forms["selectForm"].fontcolor.value =	load("fontcolor");
 		if(deviceCode == "GT-S860" || deviceCode == "SHW-M410" || deviceCode == "GT-S853" || deviceCode == "SHW-M210" || deviceCode == "GT-S850" || deviceCode == "SCH-F859" || deviceCode == "GT-S725" || deviceCode == "GT-S723" || deviceCode == "SHW-M270" || deviceCode == "SCH-W689" || deviceCode == "GT-S578" || deviceCode == "GT-S575" || deviceCode == "GT-S538")
 		{
-			document.forms["selectForm"].fontopacity.value = widget.preferenceForKey("fontopacity");
-			document.forms["selectForm"].opacity.value = widget.preferenceForKey("opacity");
+			document.forms["selectForm"].fontopacity.value = load("fontopacity");
+			document.forms["selectForm"].opacity.value = load("opacity");
 		}
 		else
-			document.forms["selectForm"].opacityAlt.value = widget.preferenceForKey("opacityAlt");
+			document.forms["selectForm"].opacityAlt.value = load("opacityAlt");
 		
-		document.forms["selectForm"].alignment.value = widget.preferenceForKey("alignment");
+		document.forms["selectForm"].alignment.value = load("alignment");
 		// Border Values
-		document.forms["selectForm"].borderstyle.value = widget.preferenceForKey("borderstyle");
-		document.forms["selectForm"].bordersize.value = widget.preferenceForKey("bordersize");
-		document.forms["selectForm"].bordercolor.value = widget.preferenceForKey("bordercolor");
-		document.forms["selectForm"].borderradiusTopLeft.value = widget.preferenceForKey("borderradiusTopLeft");
-		document.forms["selectForm"].borderradiusTopRight.value = widget.preferenceForKey("borderradiusTopRight");
-		document.forms["selectForm"].borderradiusBottomLeft.value = widget.preferenceForKey("borderradiusBottomLeft");
-		document.forms["selectForm"].borderradiusBottomRight.value = widget.preferenceForKey("borderradiusBottomRight");
+		document.forms["selectForm"].borderstyle.value = load("borderstyle");
+		document.forms["selectForm"].bordersize.value = load("bordersize");
+		document.forms["selectForm"].bordercolor.value = load("bordercolor");
+		document.forms["selectForm"].borderradiusTopLeft.value = load("borderradiusTopLeft");
+		document.forms["selectForm"].borderradiusTopRight.value = load("borderradiusTopRight");
+		document.forms["selectForm"].borderradiusBottomLeft.value = load("borderradiusBottomLeft");
+		document.forms["selectForm"].borderradiusBottomRight.value = load("borderradiusBottomRight");
 		// Background Values
-		document.forms["selectForm"].backgroundcolor.value = widget.preferenceForKey("backgroundcolor");
+		document.forms["selectForm"].backgroundcolor.value = load("backgroundcolor");
 		// Date Values
-		document.forms["selectForm"].datemode.value = widget.preferenceForKey("datemode");
-		document.forms["selectForm"].yearMode.value = widget.preferenceForKey("yearMode");
-		document.forms["selectForm"].shortMode.value = widget.preferenceForKey("shortMode");
+		document.forms["selectForm"].datemode.value = load("datemode");
+		document.forms["selectForm"].yearMode.value = load("yearMode");
+		document.forms["selectForm"].shortMode.value = load("shortMode");
 		// Effect Values
-		document.forms["selectForm"].glasses.value = widget.preferenceForKey("glasses");
+		document.forms["selectForm"].glasses.value = load("glasses");
 		
 		if(badaVersion == "Bada/2.0")
 		{
-			document.forms["selectForm"].glow.value = widget.preferenceForKey("glow");
-			document.forms["selectForm"].glowColor.value = widget.preferenceForKey("glowColor");
+			document.forms["selectForm"].glow.value = load("glow");
+			document.forms["selectForm"].glowColor.value = load("glowColor");
 		}
 		
 		saveSettings();
@@ -220,41 +261,41 @@ function saveSettings()
 		closeSettings();
 		// 	Text Values
 		
-		widget.setPreferenceForKey(fontStyle, "fontStyle");
-		widget.setPreferenceForKey(fontWeight, "fontWeight");
-		widget.setPreferenceForKey(fontcolor, "fontcolor");
+		save(fontStyle, "fontStyle");
+		save(fontWeight, "fontWeight");
+		save(fontcolor, "fontcolor");
 		
 		if(deviceCode == "GT-S860" || deviceCode == "SHW-M410" || deviceCode == "GT-S853" || deviceCode == "SHW-M210" || deviceCode == "GT-S850" || deviceCode == "SCH-F859" || deviceCode == "GT-S725" || deviceCode == "GT-S723" || deviceCode == "SHW-M270" || deviceCode == "SCH-W689" || deviceCode == "GT-S578" || deviceCode == "GT-S575" || deviceCode == "GT-S538")
-			widget.setPreferenceForKey(fontopacity, "fontopacity");
+			save(fontopacity, "fontopacity");
 		
-		widget.setPreferenceForKey(alignment, "alignment");
+		save(alignment, "alignment");
 		// Border Values
-		widget.setPreferenceForKey(borderstyle, "borderstyle");
-		widget.setPreferenceForKey(bordersize, "bordersize");
-		widget.setPreferenceForKey(bordercolor, "bordercolor");
-		widget.setPreferenceForKey(borderradiusTopLeft, "borderradiusTopLeft");
-		widget.setPreferenceForKey(borderradiusTopRight, "borderradiusTopRight");
-		widget.setPreferenceForKey(borderradiusBottomLeft, "borderradiusBottomLeft");
-		widget.setPreferenceForKey(borderradiusBottomRight, "borderradiusBottomRight");
+		save(borderstyle, "borderstyle");
+		save(bordersize, "bordersize");
+		save(bordercolor, "bordercolor");
+		save(borderradiusTopLeft, "borderradiusTopLeft");
+		save(borderradiusTopRight, "borderradiusTopRight");
+		save(borderradiusBottomLeft, "borderradiusBottomLeft");
+		save(borderradiusBottomRight, "borderradiusBottomRight");
 		// Background Values
-		widget.setPreferenceForKey(backgroundcolor, "backgroundcolor");
+		save(backgroundcolor, "backgroundcolor");
 		
 		if(deviceCode == "GT-S860" || deviceCode == "SHW-M410" || deviceCode == "GT-S853" || deviceCode == "SHW-M210" || deviceCode == "GT-S850" || deviceCode == "SCH-F859" || deviceCode == "GT-S725" || deviceCode == "GT-S723" || deviceCode == "SHW-M270" || deviceCode == "SCH-W689" || deviceCode == "GT-S578" || deviceCode == "GT-S575" || deviceCode == "GT-S538")
-			widget.setPreferenceForKey(opacity, "opacity");
+			save(opacity, "opacity");
 		else
-			widget.setPreferenceForKey(opacity, "opacityAlt");
+			save(opacity, "opacityAlt");
 		
 		// Date Values
-		widget.setPreferenceForKey(datemode, "datemode");
-		widget.setPreferenceForKey(yearMode, "yearMode");
-		widget.setPreferenceForKey(shortMode, "shortMode");
+		save(datemode, "datemode");
+		save(yearMode, "yearMode");
+		save(shortMode, "shortMode");
 		// Effect Values
-		widget.setPreferenceForKey(glasses, "glasses");
+		save(glasses, "glasses");
 		
 		if(badaVersion == "Bada/2.0")
 		{
-			widget.setPreferenceForKey(glow, "glow");
-			widget.setPreferenceForKey(glowColor, "glowColor");
+			save(glow, "glow");
+			save(glowColor, "glowColor");
 		}
 		
 		reload();
