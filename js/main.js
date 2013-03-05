@@ -88,8 +88,8 @@ function loadCSS()
  */
 function show()
 {
-	var yearOn = widget.preferenceForKey("yearMode");
-	var shortOn = widget.preferenceForKey("shortMode");
+	var yearOn = load("yearMode");
+	var shortOn = load("shortMode");
 	
 	var today=new Date();
 	
@@ -211,7 +211,7 @@ function onLocalTimeChanged(event, mode)
  */
 function redesign()
 {
-	var dateOn = widget.preferenceForKey("datemode");
+	var dateOn = load("datemode");
 	
 	if(type == "lite")
 	{
@@ -270,8 +270,8 @@ function redesign()
  */
 function showItem()
 {
-	var glowCheck = widget.preferenceForKey("glow");
-	var dateOn = widget.preferenceForKey("datemode");
+	var glowCheck = load("glow");
+	var dateOn = load("datemode");
 	
 	if(type == "full")
 	{
@@ -362,7 +362,7 @@ function hide(id)
  */
 function dateMode()
 {
-	var dateOn = widget.preferenceForKey("datemode");
+	var dateOn = load("datemode");
 	
 	if(dateOn == "block")
     {
