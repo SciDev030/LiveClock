@@ -250,7 +250,7 @@ function saveSettings()
 		if(getFullmodeSize == "480,762,0,0" || getFullmodeSize == null)
 			newTop = 90 + newBordersize;
 		else if(getFullmodeSize == "240,381,0,0" || deviceCode == "GT-S533")
-			newTop = 43 + newBordersize;
+			newTop = 44 + newBordersize;
 		else
 			newTop = 59 + newBordersize;
 		toChange6.style.top = newTop+"px";
