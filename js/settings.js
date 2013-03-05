@@ -28,6 +28,46 @@ function openSettings()
 }
 
 /**
+ * Save user data in the widget data storage. On devices with HTML5 support the items will save as localStorage item.
+ * @param value {String}	Data to save
+ * @param key {String}		Where to find the saved data
+ * @see load(key)
+ * @author Marco Büttner
+ * @since 3.2
+ */
+function save(value, key)
+{
+	try
+	{
+		widget.setPreferenceForKey(value, key);
+	}
+	catch (e)
+	{
+		localStorage.setItem(key, value);
+	}
+}
+
+/**
+ * Give back the saved item.
+ * @param key {String}		Where the data are loading
+ * @returns {String}
+ */
+function load(key)
+{
+	var response = null;
+	try
+	{
+		response = widget.preferenceForKey(key);
+		return response;
+	}
+	catch (e)
+	{
+		response = localStorage.getItem(key);
+		return response;
+	}
+}
+
+/**
  * This function will call after clicking the cancel button and close the settings menu
  * @since 2.0
  * @author Marco BÜttner
@@ -63,47 +103,6 @@ function closeSettings()
 	   		resize(g_wqvga_idlewidth, g_wqvga_idleheight);
 	   	else
 	   		resize(g_hvga_idlewidth, g_hvga_idleheight);
-	}
-}
-
-/**
- * save value to key on widget data storage
- * 
- * @param key {String}	Key where the value saved
- * @param value {String} Value which must saved
- * @see load(key)
- * @author Marco Büttner
- * @since 3.2
- */
-function save(key, value)
-{
-	try
-	{
-		widget.setPreferenceForKey(value, key);
-	}
-	catch (e)
-	{
-		localStorage.setItem(key, value);
-	}
-}
-
-/**
- * load data from the widget data storage by key.
- * 
- * @param key {String}	To get value of the key
- * @see save(key, value)
- * @author Marco Büttner
- * @since 3.2
- */
-function load(key)
-{
-	try
-	{
-		widget.preferenceForKey(key);
-	}
-	catch (e)
-	{
-		localStorage.getItem(key);
 	}
 }
 
@@ -251,7 +250,7 @@ function saveSettings()
 		if(getFullmodeSize == "480,762,0,0" || getFullmodeSize == null)
 			newTop = 90 + newBordersize;
 		else if(getFullmodeSize == "240,381,0,0" || deviceCode == "GT-S533")
-			newTop = 44 + newBordersize;
+			newTop = 43 + newBordersize;
 		else
 			newTop = 59 + newBordersize;
 		toChange6.style.top = newTop+"px";

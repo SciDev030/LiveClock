@@ -253,7 +253,7 @@ function redesign()
 		getElement("foreground").style.top = "2px";
 		getElement("span").style.width = "207px";
 		getElement("span").style.top = "5px";
-		getElement("date").style.left = "55px";
+		//getElement("date").style.left = "55px";
 		getElement("time").style.top = "5px";
 		
 		if(dateOn == "block") 
