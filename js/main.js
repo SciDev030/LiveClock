@@ -3,12 +3,12 @@ var curLCver = "3.2.0"; // LiveClock
 var LCver = "";
 
 // WVGA
-var g_idlewidth=475;
-var g_idleheight=120;
-var g_idlewidthold=465;
-var g_idledateheight=135;
-var g_fullwidth=480;
-var g_fullheight=800;
+var g_idlewidth=475; // idle width of the widget without date box
+var g_idleheight=120; // idle height of the widget without date box
+var g_idlewidthold=465;  // idle width of the widget without date box on bada 1.x
+var g_idledateheight=135;  // idle height of the widget with date box
+var g_fullwidth=480;  // fullscreen width of the widget
+var g_fullheight=800; // fullscreen height of the widget
 // HVGA
 var g_hvga_idlewidth=315;
 var g_hvga_idleheight=85;
@@ -21,7 +21,7 @@ var g_wqvga_idleheight=65;
 var g_wqvga_idledateheight=85;
 var g_wqvga_fullwidth=240;
 var g_wqvga_fullheight=400;
-var type = "full";
+var type = "full"; // pro = "full", lite = "lite"
 
 var ShortOfWeek = [GetMessage("shortSun"), GetMessage("shortMon"), GetMessage("shortTue"), GetMessage("shortWed"), GetMessage("shortThu"), GetMessage("shortFri"), GetMessage("shortSat")];
 var ShortOfYear = [GetMessage("shortJan"), GetMessage("shortFeb"), GetMessage("shortMar"), GetMessage("shortApr"), GetMessage("shortMay"), GetMessage("shortJun"), GetMessage("shortJul"), GetMessage("shortAug"), GetMessage("shortSep"), GetMessage("shortOct"), GetMessage("shortNov"), GetMessage("shortDec")];
