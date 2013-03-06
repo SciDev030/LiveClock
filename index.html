@@ -103,14 +103,14 @@
 						</li>
 						<li><script type="text/javascript">document.write(GetMessage("sColor"));</script>
 							<select name="fontcolor" size="1" class="selectStyle">
-								<option value="deepskyblue">
-									<script type="text/javascript">document.write(GetMessage("vDeepskyblue"));</script>
-								</option>
 								<option value="white" selected="selected">
 									<script type="text/javascript">document.write(GetMessage("vWhite"));</script>
 								</option>
-								<option value="black">
-									<script type="text/javascript">document.write(GetMessage("vBlack"));</script>
+								<option value="silver">
+									<script type="text/javascript">document.write(GetMessage("vSilver"));</script>
+								</option>
+								<option value="deepskyblue">
+									<script type="text/javascript">document.write(GetMessage("vDeepskyblue"));</script>
 								</option>
 								<option value="royalblue">
 									<script type="text/javascript">document.write(GetMessage("vRoyalblue"));</script>
@@ -120,6 +120,9 @@
 								</option>
 								<option value="red">
 									<script type="text/javascript">document.write(GetMessage("vRed"));</script>
+								</option>
+								<option value="black">
+									<script type="text/javascript">document.write(GetMessage("vBlack"));</script>
 								</option>
 								<option value="orange">
 									<script type="text/javascript">document.write(GetMessage("vOrange"));</script>
@@ -217,8 +220,8 @@
 								<option value="white" selected="selected">
 									<script type="text/javascript">document.write(GetMessage("vWhite"));</script>
 								</option>
-								<option value="black">
-									<script type="text/javascript">document.write(GetMessage("vBlack"));</script>
+								<option value="silver">
+									<script type="text/javascript">document.write(GetMessage("vSilver"));</script>
 								</option>
 								<option value="deepskyblue">
 									<script type="text/javascript">document.write(GetMessage("vDeepskyblue"));</script>
@@ -231,6 +234,9 @@
 								</option>
 								<option value="red">
 									<script type="text/javascript">document.write(GetMessage("vRed"));</script>
+								</option>
+								<option value="black">
+									<script type="text/javascript">document.write(GetMessage("vBlack"));</script>
 								</option>
 								<option value="orange">
 									<script type="text/javascript">document.write(GetMessage("vOrange"));</script>
@@ -398,8 +404,10 @@
 				</div>
 
 				<div class="opener" id="EffectSettings">
-					<b><script type="text/javascript">document.write(GetMessage("stringEffect"));</script>
-						<img src="images/new/plus.png" height="9" width="9" alt="open" align="absmiddle" /></b>
+					<b>
+						<script type="text/javascript">document.write(GetMessage("stringEffect"));</script>
+						<img src="images/new/plus.png" height="9" width="9" alt="open" align="absmiddle" />
+					</b>
 				</div>
 				<div class="myContent">
 					<ul>
@@ -417,19 +425,18 @@
 								<option value="0.0">
 									<script type="text/javascript">document.write(GetMessage("vOff"));</script>
 								</option>
-						</select></li>
-						<span id="glowSet" class="nopadding">
-							<li><script type="text/javascript">document.write(GetMessage("sGlow"));</script>
-								<select name="glow" size="1" class="selectStyle"  onblur="onBlurAction('glow');">
-									<option value="10px">
-										<script type="text/javascript">document.write(GetMessage("vOn"));</script>
-									</option>
-									<option value="0" selected="selected">
-										<script type="text/javascript">document.write(GetMessage("vOff"));</script>
-									</option>
-								</select>
-							</li>
-						</span>
+							</select>
+						</li>
+						<li id="glowSet"><script type="text/javascript">document.write(GetMessage("sGlow"));</script>
+							<select name="glow" size="1" class="selectStyle" onblur="onBlurAction('glow');">
+								<option value="10px">
+									<script type="text/javascript">document.write(GetMessage("vOn"));</script>
+								</option>
+								<option value="0" selected="selected">
+									<script type="text/javascript">document.write(GetMessage("vOff"));</script>
+								</option>
+							</select>
+						</li>
 						<li id="glowSetColor"><script type="text/javascript">document.write(GetMessage("sGlowColor"));</script>
 							<select name="glowColor" size="1" class="selectStyle">
 								<option value="white" selected="selected">
@@ -506,7 +513,6 @@
 				<div class="myContent">
 					<ul>
 						<li><script type="text/javascript">document.write(GetMessage("sShow"));</script>
-							<!-- <select name="datemode" size="1" class="selectStyle" onchange="onBlurAction('date');"> -->
 							<select name="datemode" size="1" class="selectStyle" onblur="onBlurAction('date');">
 								<option value="block">
 									<script type="text/javascript">document.write(GetMessage("vOn"));</script>
@@ -548,7 +554,7 @@
 			<script type="text/javascript">document.write(GetMessage("sClose"));</script>
 		</div>
 
-		<div class="bFoot">LiveClock PRO 3.2 <!-- .Build3.20.0001.20130226 --><span id="updateStatus"></span></div>
+		<div class="bFoot">LiveClock PRO 3.2 <!-- .Build3.20.2211.20130306 --><span id="updateStatus"></span></div>
 	</div>
 </body>
 </html>
